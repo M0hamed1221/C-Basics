@@ -50,10 +50,8 @@ namespace OOP_EXAM
                 AnswerList = new Answer[answerCount];
 
             }
-            public override string ToString()
-            {
-                return $"{Header} (Mark: {Mark})";
-            }
+            public abstract string ToString();
+           
             public abstract void DisplayQuestion();
 
             public abstract int CompareTo(Question other);
@@ -104,6 +102,10 @@ namespace OOP_EXAM
 
 
             }
+            public override string ToString()
+            {
+                return $"{Header} (Mark: {Mark})";
+            }
         }
         /* **************************************** Chlid TrueFalseQuestion Class ************************************   */
 
@@ -139,6 +141,11 @@ namespace OOP_EXAM
 
 
 
+            }
+
+            public override string ToString()
+            {
+                return $"{Header} (Mark: {Mark})";
             }
         }
 
@@ -192,15 +199,11 @@ namespace OOP_EXAM
                 {
                     Questions[i].DisplayQuestion();
                     Console.Write("Your answer (enter the answer id): ");
-                    if (int.TryParse(Console.ReadLine(), out int userAnswer))
-                    {
-                        UserAnswers[i] = userAnswer;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid input. Please enter a valid number.");
-                        i--; // reAsk 
-                    }
+                    int AnswersMaxRange = Questions[i].AnswerList.Length;
+
+                    UserAnswers[i] = ValidnumaricInput($"Enter Exam Time (in minutes, between 1 and {AnswersMaxRange}):", 1, AnswersMaxRange);
+
+                  
                     Console.WriteLine();
                 }
 
@@ -260,16 +263,11 @@ namespace OOP_EXAM
                 for (int i = 0; i < NumberOfQuestions; i++)
                 {
                     Questions[i].DisplayQuestion();
+                    int AnswersMaxRange = Questions[i].AnswerList.Length;
                     Console.Write("Your answer (Enter the answer id): ");
-                    if (int.TryParse(Console.ReadLine(), out int userAnswer))
-                    {
-                        UserAnswers[i] = userAnswer;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid input. Please enter a valid number.");
-                        i--; // RollBack ReAsk Again
-                    }
+                    /*Vaildate on crroct answer be in the range*/
+                    UserAnswers[i] = ValidnumaricInput($"Enter Exam Time (in minutes, between 1 and {AnswersMaxRange}):", 1, AnswersMaxRange);
+                  
                     Console.WriteLine();
                 }
 
