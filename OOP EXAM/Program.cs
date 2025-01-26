@@ -281,27 +281,21 @@ namespace OOP_EXAM
             {
                 Console.WriteLine("-------------------------------------------------------------------------------------");
 
-                Console.WriteLine("Exam Result:");
+                Console.WriteLine("Parctial Exam Correct Answers:");
                 Console.WriteLine("------------------------------------------");
 
 
                 /* sum the question Grads */
                 /*check on the answers and  sum the correct answers */
-
+                /********************************* only Display the Correct Answers************************************ */
 
                 int totalMarks = 0;
                 int userGrade = 0;
 
                 for (int i = 0; i < NumberOfQuestions; i++)
                 {
-                    Console.WriteLine($"Question {i + 1}: {Questions[i].Header} (Mark: {Questions[i].Mark})");
-                    Console.WriteLine(Questions[i].Body);
-                    foreach (var answer in Questions[i].AnswerList)
-                    {
-                        Console.WriteLine(answer);
-                    }
-                    Console.WriteLine($"Your answer => {UserAnswers[i]}");
-                    Console.WriteLine($"Correct Answer=> {Questions[i].RightAnswer}");
+                    
+                    Console.WriteLine($"Question {i + 1}: Correct Answer=> {Questions[i].RightAnswer}");
 
                     if (UserAnswers[i] == Questions[i].RightAnswer)
                     {
@@ -489,7 +483,11 @@ namespace OOP_EXAM
                     }
 
                     Console.WriteLine("Enter Correct Answer No:");
-                    exam.Questions[i].RightAnswer = int.Parse(Console.ReadLine());
+                    int CorrectAnswerNo;
+                     CorrectAnswerNo = ValidnumaricInput("Enter Correct Answer No:", 1, answerCount);
+                    exam.Questions[i].RightAnswer = CorrectAnswerNo;
+
+
                 }
             }
 
