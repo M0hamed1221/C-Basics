@@ -469,7 +469,8 @@ namespace OOP_EXAM
                 else
                 {
                     /****************************************************************************************************/
-                    int answerCount = ValidnumaricInput("Enter Number of Answers:", 1);
+                    /*multple choices must be more than one answer to choic between them*/
+                    int answerCount = ValidnumaricInput("Enter Number of Answers:", 2);
 
 
                     /* Assgin  Answers  and The Correct Answers */
@@ -482,7 +483,7 @@ namespace OOP_EXAM
                         exam.Questions[i].AnswerList[j] = new Answer(j + 1, answerText);
                     }
 
-                    Console.WriteLine("Enter Correct Answer No:");
+                  
                     int CorrectAnswerNo;
                      CorrectAnswerNo = ValidnumaricInput("Enter Correct Answer No:", 1, answerCount);
                     exam.Questions[i].RightAnswer = CorrectAnswerNo;
