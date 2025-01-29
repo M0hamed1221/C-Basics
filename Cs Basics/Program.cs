@@ -173,6 +173,33 @@ Error	CS0664	Literal of type double cannot be implicitly converted to type 'deci
             /*  DONE*/
         }
 
+        //private static int LinerSearch<T>(T[] source,T Target)
+        //{
+        //    if (source?.Length > 0)
+        //    {
+
+
+
+
+        //        foreach (int i in source)
+        //        {
+        //            if (source[i] == Target)
+        //            {
+        //                return i;
+        //            }
+        //        }
+
+        //        for (int i = 0; i < source.Length; i++)
+        //        {
+        //            if (source[i] == Target)
+        //            {
+        //                return i;
+        //            }
+        //        }
+        //    }
+
+        //    return -1;
+        //}
 
         class employee
         {
