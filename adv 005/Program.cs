@@ -26,12 +26,12 @@ namespace adv_005
 
             // anonymous method 
             Console.WriteLine(" anonymous method:");
-            LibraryEngin.ProcessBooks(books, delegate (Book book) { return book.Title; });
+            LibraryEngin.ProcessBooks(books, delegate (Book book) { return book.ISBN; });
             Console.WriteLine("----------------------");
 
             // lambda expression 
             Console.WriteLine("lambda expression:");
-            LibraryEngin.ProcessBooks(books, book => book.Title.ToString());
+            LibraryEngin.ProcessBooks(books, book => book.PublicationDate.ToString());
         }
     }
 
