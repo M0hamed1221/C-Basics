@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using EF_Core_002.Entities;
@@ -24,6 +25,8 @@ namespace EF_Core_002.Contexts
         {
             // Fluent api 
 
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
             modelBuilder.Entity<Department>().ToTable("Department");
             modelBuilder.Entity<Department>().Property(d => d.Name).IsRequired().HasMaxLength(100);
 
@@ -37,6 +40,10 @@ namespace EF_Core_002.Contexts
 
            
             modelBuilder.Entity<Course_Inst>().HasKey(ci => new { ci.Inst_ID, ci.Course_ID });
+            modelBuilder.Entity<Department>().HasMany(D => D.Instructors)
+                                             .WithOne(i => i.Department)
+                                             .HasForeignKey(i=>i.Dept_ID)
+                                             .OnDelete(DeleteBehavior.NoAction);
         }
 
         public DbSet<Student> Students { get; set; }

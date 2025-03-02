@@ -13,5 +13,11 @@ namespace EF_Core_002.Entities
         public int Stud_ID { get; set; }
         public int Course_ID { get; set; }
         public int Grade { get; set; }
+
+        public Student Students { get; set; } 
+
+        public Course Course { get; set; } 
+
+
     }
 }
